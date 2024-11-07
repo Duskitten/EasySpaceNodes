@@ -1,7 +1,7 @@
 # Godot_SpaceNodes
 Godot helper nodes to create 2D/3D Spaces for physics automatically.
 
-## Why?:
+## Why?
 
 This is useful in the event you would like to have many scenes with overlapping objects that may not want to interact with eachother and you don't want to waste physics layers
 
