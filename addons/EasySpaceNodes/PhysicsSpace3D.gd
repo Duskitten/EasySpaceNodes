@@ -13,7 +13,6 @@ func _propagate_enter_space(NodeVal:Node) -> void:
 	   NodeVal is RigidBody3D || 
 	   NodeVal is CharacterBody3D):
 		PhysicsServer3D.body_set_space(NodeVal.get_rid(), NewSpace)
-		print("Oi!")
 		PhysicsServer3D.space_set_active(NewSpace,true)
 		for i in NodeVal.get_child_count():
 			_propagate_enter_space(NodeVal.get_child(i))
