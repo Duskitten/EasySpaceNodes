@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dup3fxr3c7peo"]
+
+[ext_resource type="Script" path="res://addons/EasySpaceNodes/PhysicsSpace3D.gd" id="1_4s6nu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j4djq"]
+size = Vector3(5, 0.5, 5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vomg8"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Extra" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Extra"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4, 4)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Extra"]
+transform = Transform3D(0.524519, 0.591506, 0.612372, 0.158494, -0.774519, 0.612372, 0.836516, -0.224144, -0.5, 0, 0, 0)
+
+[node name="Bodies" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bodies"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bodies/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_j4djq")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Bodies/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+size = Vector3(5, 0.5, 5)
+
+[node name="PhysicsSpace3D" type="Node3D" parent="Bodies"]
+script = ExtResource("1_4s6nu")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Bodies/PhysicsSpace3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Bodies/PhysicsSpace3D/RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bodies/PhysicsSpace3D/RigidBody3D"]
+shape = SubResource("SphereShape3D_vomg8")

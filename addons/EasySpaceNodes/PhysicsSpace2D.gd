@@ -6,9 +6,9 @@ var NewSpace:RID
 func _ready() -> void:
 	NewSpace = PhysicsServer2D.space_create()
 	_propagate_enter_space(self)
+	child_entered_tree.connect(_propagate_enter_space.bind())
 
 func _propagate_enter_space(NodeVal:Node) -> void:
-	print(NodeVal)
 	if (NodeVal is StaticBody2D || 
 	   NodeVal is RigidBody2D || 
 	   NodeVal is CharacterBody2D):
